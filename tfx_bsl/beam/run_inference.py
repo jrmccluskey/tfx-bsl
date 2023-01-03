@@ -32,6 +32,7 @@ from googleapiclient import discovery
 from googleapiclient import http
 import numpy as np
 import tensorflow as tf
+import tensorflow_hub as hub
 from tfx_bsl.public.proto import model_spec_pb2
 from tfx_bsl.telemetry import util
 
@@ -576,7 +577,7 @@ class _BaseSavedModelHandler(_BaseModelHandler):
                load_override_fn: Optional[LoadOverrideFnType]):
     super().__init__(inference_spec_type)
     self._inference_spec_type = inference_spec_type
-    self._model_path = inference_spec_type.saved_model_spec.model_path
+    self._model_path = hub.resolve(inference_spec_type.saved_model_spec.model_path)
     if not self._model_path:
       raise ValueError('Model path is not valid.')
     self._tags = _get_tags(inference_spec_type)
