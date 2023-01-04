@@ -180,6 +180,7 @@ setup(
             nightly='>=1.13.0.dev',
             git_master='@git+https://github.com/tensorflow/metadata@master'),
         'tensorflow-serving-api>=1.15,!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,<3',
+        'tennsorflow_hub>0.10.0,<1',
     ],
     python_requires='>=3.7,<4',
     packages=find_packages(),
